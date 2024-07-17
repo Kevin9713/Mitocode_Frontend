@@ -1,0 +1,20 @@
+table {
+  text-align: center !important;
+  width: 100%;
+}
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th{
+    width: 25%;
+    text-align: center !important;
+  }
+  
+/* Para centrar las columnas de la table */
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}

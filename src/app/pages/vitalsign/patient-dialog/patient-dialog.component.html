@@ -1,0 +1,43 @@
+<mat-dialog-content>
+    <mat-toolbar>
+        <span>New Patient</span>
+    </mat-toolbar>
+
+    <div class="example-container">
+
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="patient.firstName">
+        </mat-form-field>       
+
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="patient.lastName">
+        </mat-form-field>    
+
+        <mat-form-field>
+            <mat-label>DNI</mat-label>
+            <input matInput [(ngModel)]="patient.dni">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput [(ngModel)]="patient.address">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput [(ngModel)]="patient.phone">
+        </mat-form-field>      
+        
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="patient.email">
+        </mat-form-field>  
+    </div>
+
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile><button mat-button color="primary" (click)="save()"><mat-icon>done</mat-icon>Done</button></mat-grid-tile>
+        <mat-grid-tile><button mat-button color="accent" (click)="close()"><mat-icon>cancel</mat-icon>Cancel</button></mat-grid-tile>
+    </mat-grid-list>
+</mat-dialog-content>

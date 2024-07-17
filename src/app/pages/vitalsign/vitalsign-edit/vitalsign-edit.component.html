@@ -1,0 +1,89 @@
+<form [formGroup]="Etiquetform" class="example-container" (submit)="InsertOrUpdate()">
+
+    <div [hidden]="true">
+        <mat-form-field>
+            <input matInput placeholder="ID" required formControlName="idSigns">
+        </mat-form-field>
+    </div>
+
+    <!-- <mat-form-field>
+        <mat-label>Patient</mat-label>
+        <input matInput formControlName="patient" [matAutocomplete]="autoPatient" [formControl]="patientControl">
+        <mat-autocomplete #autoPatient="matAutocomplete" [displayWith]="showPatient">
+            @for (p of patients$ | async; track $index) {
+            <mat-option [value]="p">
+                {{p.firstName}} {{p.lastName}}
+            </mat-option>
+            }
+        </mat-autocomplete>
+    </mat-form-field> -->
+
+    <tr>
+        <mat-form-field style="width: 50% !important; min-width: 210px !important;">
+            <mat-label>Patient</mat-label>
+            <input matInput formControlName="patient" [matAutocomplete]="autoPatient" [formControl]="patientControl">
+            <mat-autocomplete #autoPatient="matAutocomplete" [displayWith]="showPatient">
+                @for (p of patients$ | async; track $index) {
+                <mat-option [value]="p">
+                    {{p.firstName}} {{p.lastName}}
+                </mat-option>
+                }
+            </mat-autocomplete>
+        </mat-form-field>
+
+        @if (patientvalid) {
+        <button mat-button color="primary" style="width: 20% !important;" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+            <span>Add Patient</span>
+        </button>
+        }
+    </tr>
+
+    <mat-form-field style="width: 50% !important">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="registrationDate">
+        @if (f['registrationDate'].errors?.['required'] && f['registrationDate'].touched){
+        <small class="invalid">Is required</small>
+        }
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Temperature</mat-label>
+        <input matInput required formControlName="temperature">
+        @if (f['temperature'].errors?.['required'] && f['temperature'].touched){
+        <small class="invalid">Is required</small>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Pulse</mat-label>
+        <input matInput required formControlName="pulse">
+        @if (f['pulse'].errors?.['required'] && f['pulse'].touched){
+        <small class="invalid">Is required</small>
+        }
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Respiratory Rate</mat-label>
+        <input matInput required formControlName="respiratoryRate">
+        @if (f['respiratoryRate'].errors?.['required'] && f['respiratoryRate'].touched){
+        <small class="invalid">Is required</small>
+        }
+    </mat-form-field>
+
+
+    <button mat-button color="primary" type="submit">
+        <mat-icon>done</mat-icon>
+        <span>Done</span>
+    </button>
+
+    <button mat-raised-button color="accent" type="button" routerLink="/pages/vitalsign">
+        <mat-icon>cancel</mat-icon>
+        <span>Cancel</span>
+    </button>
+
+</form>
